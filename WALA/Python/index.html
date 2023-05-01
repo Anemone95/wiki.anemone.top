@@ -1,0 +1,1556 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="http://wiki.anemone.top/WALA/Python/">
+      
+      
+        <link rel="prev" href="../../OCaml/GetStarted/">
+      
+      
+        <link rel="next" href="../../git/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.8">
+    
+    
+      
+        <title>Python 解析 - Anemone's Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ded33207.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#python" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="">
+    <a href="http://wiki.anemone.top/" title="Anemone&#39;s Wiki" class="md-header-nav__button md-logo" aria-label="Anemone's Wiki">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Anemone's Wiki
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Python 解析
+            
+          </span>
+        </div>
+      
+    </div>
+    
+
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" id="search-input" oninput="searchByAlgolia()"
+             class="md-search__input" name="query" aria-label="Search"
+             placeholder="Search" autocapitalize="off" autocorrect="off"
+             autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <!-- FIXME:  scroll-snap-type-->
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta" id="algolia-stats"></div>
+          <div class="md-search-result__list"  id="algolia-hits"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="alg-search-input" style="display:none"></div>
+    
+    </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Anemone&#39;s Wiki" class="md-nav__button md-logo" aria-label="Anemone's Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Anemone's Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Welcome to Anemone's Wiki
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          IDEA
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          IDEA
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../IDEA/webstorm/" class="md-nav__link">
+        Webstorm
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Java
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Java
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Java/javaCodeSnippets/" class="md-nav__link">
+        Singleton
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          MacOS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          MacOS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MacOS/install/" class="md-nav__link">
+        装机
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          OCaml
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          OCaml
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OCaml/GetStarted/" class="md-nav__link">
+        安装
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          WALA
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          WALA
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Python 解析
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Python 解析
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#build-cfg" class="md-nav__link">
+    Build CFG
+  </a>
+  
+    <nav class="md-nav" aria-label="Build CFG">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#defaultcallgraphbuilder" class="md-nav__link">
+    defaultCallGraphBuilder
+  </a>
+  
+    <nav class="md-nav" aria-label="defaultCallGraphBuilder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#buildcalsshierarchy" class="md-nav__link">
+    buildCalssHierarchy()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abstractanalysisenginedefaultcallgraphbuildercha-options-cache" class="md-nav__link">
+    AbstractAnalysisEngine#defaultCallGraphBuilder(cha, options, cache)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    目录树
+  </a>
+  
+    <nav class="md-nav" aria-label="目录树">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python3" class="md-nav__link">
+    Python3
+  </a>
+  
+    <nav class="md-nav" aria-label="Python3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cfg" class="md-nav__link">
+    CFG
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          Git
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Git
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="md-nav__link">
+        Git常用命令
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+          Linux
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/Commands/" class="md-nav__link">
+        Replace all str in a dir
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/compress/" class="md-nav__link">
+        压缩与解压缩
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/disk-manage/" class="md-nav__link">
+        Umount the disk
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/trojan/" class="md-nav__link">
+        trojan 安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/v2ray/" class="md-nav__link">
+        v2ray
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/%E8%A3%85%E6%9C%BA/" class="md-nav__link">
+        装机
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+          Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/flask/" class="md-nav__link">
+        Flask 用法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/python27strbytehex%E8%BD%AC%E6%8D%A2/" class="md-nav__link">
+        Python 字符串转换
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/pythonCodeSnippets/" class="md-nav__link">
+        Python Code Snippets
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+          Rust
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Rust
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rust/collections/" class="md-nav__link">
+        常见集合
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rust/common_concepts/" class="md-nav__link">
+        常见编程概念
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rust/enums/" class="md-nav__link">
+        枚举与模式匹配
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rust/error_handling/" class="md-nav__link">
+        错误处理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rust/ownership/" class="md-nav__link">
+        所有权
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rust/started/" class="md-nav__link">
+        QuickStarted
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rust/structs/" class="md-nav__link">
+        结构体
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rust/trait_and_lifespan/" class="md-nav__link">
+        泛型, trait和生命周期
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+          Windows
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          Windows
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows/Listary6/" class="md-nav__link">
+        Listary 6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows/%E8%A3%85%E6%9C%BA/" class="md-nav__link">
+        装机
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#build-cfg" class="md-nav__link">
+    Build CFG
+  </a>
+  
+    <nav class="md-nav" aria-label="Build CFG">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#defaultcallgraphbuilder" class="md-nav__link">
+    defaultCallGraphBuilder
+  </a>
+  
+    <nav class="md-nav" aria-label="defaultCallGraphBuilder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#buildcalsshierarchy" class="md-nav__link">
+    buildCalssHierarchy()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abstractanalysisenginedefaultcallgraphbuildercha-options-cache" class="md-nav__link">
+    AbstractAnalysisEngine#defaultCallGraphBuilder(cha, options, cache)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    目录树
+  </a>
+  
+    <nav class="md-nav" aria-label="目录树">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python3" class="md-nav__link">
+    Python3
+  </a>
+  
+    <nav class="md-nav" aria-label="Python3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cfg" class="md-nav__link">
+    CFG
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="python">Python 解析</h1>
+<h2 id="build-cfg">Build CFG</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="w">        </span><span class="n">PythonAnalysisEngine</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">analysisEngine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PythonAnalysisEngine</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nd">@Override</span>
+<span class="w">            </span><span class="kd">public</span><span class="w"> </span><span class="n">Void</span><span class="w"> </span><span class="nf">performAnalysis</span><span class="p">(</span><span class="n">PropagationCallGraphBuilder</span><span class="w"> </span><span class="n">builder</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">CancelException</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">assert</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">        </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">names</span><span class="o">=</span><span class="p">{</span><span class="s">&quot;cfg.py&quot;</span><span class="p">};</span>
+<span class="w">        </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">Module</span><span class="o">&gt;</span><span class="w"> </span><span class="n">modules</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HashSetFactory</span><span class="p">.</span><span class="na">make</span><span class="p">();</span>
+<span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">names</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">modules</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">SourceURLModule</span><span class="p">(</span><span class="n">getClass</span><span class="p">().</span><span class="na">getClassLoader</span><span class="p">().</span><span class="na">getResource</span><span class="p">(</span><span class="n">name</span><span class="p">)));</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">analysisEngine</span><span class="p">.</span><span class="na">setModuleFiles</span><span class="p">(</span><span class="n">modules</span><span class="p">);</span>
+<span class="w">        </span><span class="n">SSAPropagationCallGraphBuilder</span><span class="w"> </span><span class="n">builder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">SSAPropagationCallGraphBuilder</span><span class="p">)</span><span class="w"> </span><span class="n">analysisEngine</span><span class="p">.</span><span class="na">defaultCallGraphBuilder</span><span class="p">();</span>
+<span class="w">        </span><span class="n">CallGraph</span><span class="w"> </span><span class="n">CG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">builder</span><span class="p">.</span><span class="na">makeCallGraph</span><span class="p">(</span><span class="n">builder</span><span class="p">.</span><span class="na">getOptions</span><span class="p">());</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="defaultcallgraphbuilder">defaultCallGraphBuilder</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="w">    </span><span class="n">buildAnalysisScope</span><span class="p">();</span><span class="w"> </span><span class="c1">// 构建分析范围</span>
+<span class="w">    </span><span class="n">IClassHierarchy</span><span class="w"> </span><span class="n">cha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">buildClassHierarchy</span><span class="p">();</span>
+<span class="w">    </span><span class="n">setClassHierarchy</span><span class="p">(</span><span class="n">cha</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Iterable</span><span class="o">&lt;</span><span class="n">Entrypoint</span><span class="o">&gt;</span><span class="w"> </span><span class="n">eps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">entrypointBuilder</span><span class="p">.</span><span class="na">createEntrypoints</span><span class="p">(</span><span class="n">scope</span><span class="p">,</span><span class="w"> </span><span class="n">cha</span><span class="p">);</span>
+<span class="w">    </span><span class="n">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getDefaultOptions</span><span class="p">(</span><span class="n">eps</span><span class="p">);</span>
+<span class="w">    </span><span class="n">cache</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">makeDefaultCache</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">getCallGraphBuilder</span><span class="p">(</span><span class="n">cha</span><span class="p">,</span><span class="w"> </span><span class="n">options</span><span class="p">,</span><span class="w"> </span><span class="n">cache</span><span class="p">);</span><span class="w">  </span>
+</code></pre></div></td></tr></table></div>
+<h4 id="buildcalsshierarchy">buildCalssHierarchy()</h4>
+<p>调用com.ibm.wala.cast.python.client.PythonAnalysisEngine#buildClassHierarchy，内部通过SeqClassHierarchyFactory.make(scope, loader);生成CHA</p>
+<p>主要有以下，注意到所有函数继承CodeBody</p>
+<p><img alt="image-20201110160903186" src="image-20201110160903186.png" /></p>
+<p>其中调用PythonLoader加载.py文件，Loader提供initTranslator()，得到PythonCAstToIRTranslator将其翻译为IR</p>
+<h4 id="abstractanalysisenginedefaultcallgraphbuildercha-options-cache">AbstractAnalysisEngine#defaultCallGraphBuilder(cha, options, cache)</h4>
+<p>重点关注options，其中包含有几个selector</p>
+<p>ClassTargetSelector 类查找器（先由new ClassHierarchyClassTargetSelector(cha)创建，再添加）</p>
+<p>ClassHierarchyMethodTargetSelector 函数查找器（先由new ClassHierarchyMethodTargetSelector(cha)创建，再添加）</p>
+<p>期间会调用BuiltinFunctions#builtinClassTargetSelector添加builtinfunc，PythonAnalysisEngine#addBypassLogic 添加自定义函数摘要</p>
+<p>注意</p>
+<p>com.ibm.wala.cast.python.ipa.summaries.BuiltinFunctions#argSummary(com.ibm.wala.classLoader.IClass, com.ibm.wala.types.TypeReference, int) 这里添加了伪函数体</p>
+<p>PythonSSAPropagationCallGraphBuilder.makeCallGraph 构造Callgraph</p>
+<p>其中调用com.ibm.wala.cast.ipa.callgraph.AstContextInsensitiveSSAContextInterpreter将AST转为SSA</p>
+<p>调用com.ibm.wala.ipa.callgraph.propagation.cfa.nCFAContextSelector(1) 构造调用图</p>
+<p>**FIXME：**在构造调用图之前，伪造缺失的函数和类</p>
+<h2 id="_1">目录树</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="o">.</span>
+<span class="err">├──</span> <span class="n">analysis</span>
+<span class="err">│</span>   <span class="err">└──</span> <span class="n">ap</span>
+<span class="err">│</span>       <span class="err">├──</span> <span class="n">AccessPath</span><span class="o">.</span><span class="n">java</span>
+<span class="err">│</span>       <span class="err">├──</span> <span class="n">ArrayContents</span><span class="o">.</span><span class="n">java</span>
+<span class="err">│</span>       <span class="err">├──</span> <span class="n">CallbackAP</span><span class="o">.</span><span class="n">java</span>
+<span class="err">│</span>       <span class="err">├──</span> <span class="n">GlobalCallbackAP</span><span class="o">.</span><span class="n">java</span>
+<span class="err">│</span>       <span class="err">├──</span> <span class="n">GlobalMethodAP</span><span class="o">.</span><span class="n">java</span>
+<span class="err">│</span>       <span class="err">├──</span> <span class="n">GlobalVarAP</span><span class="o">.</span><span class="n">java</span>
+<span class="err">│</span>       <span class="err">├──</span> <span class="n">IAPRoot</span><span class="o">.</span><span class="n">java</span>
+<span class="err">│</span>       <span class="err">├──</span> <span class="n">IAccessPath</span><span class="o">.</span><span class="n">java</span>
+<span class="err">│</span>       <span class="err">├──</span> <span class="n">ICallbackAP</span><span class="o">.</span><span class="n">java</span>
+<span class="err">│</span>       <span class="err">├──</span> <span class="n">IMethodAP</span><span class="o">.</span><span class="n">java</span>
+<span class="err">│</span>       <span class="err">├──</span> <span class="n">IPathElement</span><span class="o">.</span><span class="n">java</span>
+<span class="err">│</span>       <span class="err">├──</span> <span class="n">LexicalAP</span><span class="o">.</span><span class="n">java</span>
+<span class="err">│</span>       <span class="err">├──</span> <span class="n">ListAP</span><span class="o">.</span><span class="n">java</span>
+<span class="err">│</span>       <span class="err">├──</span> <span class="n">LocalAP</span><span class="o">.</span><span class="n">java</span>
+<span class="err">│</span>       <span class="err">├──</span> <span class="n">PropertyPathElement</span><span class="o">.</span><span class="n">java</span>
+<span class="err">│</span>       <span class="err">├──</span> <span class="n">StarPathElement</span><span class="o">.</span><span class="n">java</span>
+<span class="err">│</span>       <span class="err">└──</span> <span class="n">UnknownPathElement</span><span class="o">.</span><span class="n">java</span>
+<span class="err">├──</span> <span class="n">cfg</span>
+<span class="err">│</span>   <span class="err">└──</span> <span class="n">PythonInducedCFG</span><span class="o">.</span><span class="n">java</span> 
+<span class="err">├──</span> <span class="n">client</span> <span class="c1"># 程序入口</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">PythonAnalysisEngine</span><span class="o">.</span><span class="n">java</span> <span class="c1"># 主要前端入口，将python源码转换为ICFG, addBypassLogic()添加伪造的函数原型</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">PythonTurtleAnalysisEngine</span><span class="o">.</span><span class="n">java</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">PythonTurtleLibraryAnalysisEngine</span><span class="o">.</span><span class="n">java</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">PythonTurtlePandasMergeAnalysis</span><span class="o">.</span><span class="n">java</span>
+<span class="err">│</span>   <span class="err">└──</span> <span class="n">PythonTurtleSKLearnClassifierAnalysis</span><span class="o">.</span><span class="n">java</span>
+<span class="err">├──</span> <span class="n">ipa</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">callgraph</span>
+<span class="err">│</span>   <span class="err">│</span>   <span class="err">├──</span> <span class="n">PythonConstructorTargetSelector</span><span class="o">.</span><span class="n">java</span>    <span class="c1"># 处理构造函数callee IR</span>
+<span class="err">│</span>   <span class="err">│</span>   <span class="err">├──</span> <span class="n">PythonSSAPropagationCallGraphBuilder</span><span class="o">.</span><span class="n">java</span>
+<span class="err">│</span>   <span class="err">│</span>   <span class="err">├──</span> <span class="n">PythonScopeMappingInstanceKeys</span><span class="o">.</span><span class="n">java</span>
+<span class="err">│</span>   <span class="err">│</span>   <span class="err">└──</span> <span class="n">PythonTrampolineTargetSelector</span><span class="o">.</span><span class="n">java</span>
+<span class="err">│</span>   <span class="err">└──</span> <span class="n">summaries</span>
+<span class="err">│</span>       <span class="err">├──</span> <span class="n">BuiltinFunctions</span><span class="o">.</span><span class="n">java</span>   <span class="c1"># python内置函数摘要</span>
+<span class="err">│</span>       <span class="err">├──</span> <span class="n">PythonComprehensionTrampolines</span><span class="o">.</span><span class="n">java</span>
+<span class="err">│</span>       <span class="err">├──</span> <span class="n">PythonInstanceMethodTrampoline</span><span class="o">.</span><span class="n">java</span>
+<span class="err">│</span>       <span class="err">├──</span> <span class="n">PythonSummarizedFunction</span><span class="o">.</span><span class="n">java</span>   <span class="c1"># python 函数摘要结构体，继承wala.SummarizedMethodWithNames，增强可读性，由PythonSummary获得</span>
+<span class="err">│</span>       <span class="err">├──</span> <span class="n">PythonSummary</span><span class="o">.</span><span class="n">java</span>  <span class="c1"># python函数摘要结构体，继承com.ibm.wala.ipa.summaries.MethodSummary</span>
+<span class="err">│</span>       <span class="err">├──</span> <span class="n">PythonSuper</span><span class="o">.</span><span class="n">java</span> <span class="c1"># Python超类，用于找方法调用</span>
+<span class="err">│</span>       <span class="err">│</span>   <span class="err">└──</span><span class="n">SuperMethodTargetSelector</span> <span class="c1"># 重写 getCalleeTarget()</span>
+<span class="err">│</span>       <span class="err">├──</span> <span class="n">PythonSyntheticClass</span><span class="o">.</span><span class="n">java</span>
+<span class="err">│</span>       <span class="err">└──</span> <span class="n">TurtleSummary</span><span class="o">.</span><span class="n">java</span>
+<span class="err">├──</span> <span class="n">ir</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">PythonCAstToIRTranslator</span><span class="o">.</span><span class="n">java</span> <span class="c1"># 继承AstTranslator，将Cast转换为IR，重点关注doCall()方法</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">PythonInstructionFactory</span><span class="o">.</span><span class="n">java</span> <span class="c1">#Python IR定义，继承wala.JavaSourceLoaderImpl.InstructionFactory</span>
+<span class="err">│</span>   <span class="err">└──</span> <span class="n">PythonLanguage</span><span class="o">.</span><span class="n">java</span> <span class="c1"># Python IR 继承wala.Language</span>
+<span class="err">├──</span> <span class="n">loader</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">DynamicAnnotatableEntity</span><span class="o">.</span><span class="n">java</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">PythonLoader</span><span class="o">.</span><span class="n">java</span> <span class="c1"># 继承wala.CastAbstractModuleLoader, 加载.py文件, 待实现lookupClass方法，子类需要实现getTranslatorToCAst()</span>
+<span class="err">│</span>   <span class="err">└──</span> <span class="n">PythonLoaderFactory</span><span class="o">.</span><span class="n">java</span> <span class="c1"># 工厂返回PythonLoader</span>
+<span class="err">├──</span> <span class="n">modref</span>
+<span class="err">│</span>   <span class="err">└──</span> <span class="n">PythonModRef</span><span class="o">.</span><span class="n">java</span>
+<span class="err">├──</span> <span class="n">parser</span>
+<span class="err">│</span>   <span class="err">└──</span> <span class="n">AbstractParser</span><span class="o">.</span><span class="n">java</span> <span class="c1"># ast转Cast, 实现TranslatorToCAst接口,python2/3继承</span>
+<span class="err">├──</span> <span class="n">ssa</span> <span class="c1"># Python特有的SSA</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">PythonInstructionVisitor</span><span class="o">.</span><span class="n">java</span> <span class="c1">#  继承wala.AstInstructionVisitor, 添加PythonInvoke IR</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">PythonInvokeInstruction</span><span class="o">.</span><span class="n">java</span> <span class="c1">#  PythonInvokeIR 定义</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">PythonPropertyRead</span><span class="o">.</span><span class="n">java</span>
+<span class="err">│</span>   <span class="err">└──</span> <span class="n">PythonPropertyWrite</span><span class="o">.</span><span class="n">java</span>
+<span class="err">├──</span> <span class="n">types</span>
+<span class="err">│</span>   <span class="err">└──</span> <span class="n">PythonTypes</span><span class="o">.</span><span class="n">java</span> <span class="c1"># Python的wala.TypeReference</span>
+<span class="err">└──</span> <span class="n">util</span>
+    <span class="err">├──</span> <span class="n">PythonInterpreter</span><span class="o">.</span><span class="n">java</span> <span class="c1"># 设置python2和Python3的Interpreter</span>
+    <span class="err">└──</span> <span class="n">TestCallGraphShape</span><span class="o">.</span><span class="n">java</span> <span class="c1"># 测试类</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="python3">Python3</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="o">.</span>
+<span class="err">├──</span> <span class="n">loader</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">Python3Loader</span><span class="o">.</span><span class="n">java</span> <span class="c1"># 继承PythonLoader</span>
+<span class="err">│</span>   <span class="err">└──</span> <span class="n">Python3LoaderFactory</span><span class="o">.</span><span class="n">java</span> <span class="c1"># 工厂返回Python3Loader</span>
+<span class="err">├──</span> <span class="n">parser</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">PythonCAstEntity</span><span class="o">.</span><span class="n">java</span> <span class="c1"># python的CAst，继承AbstractScriptEntity</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">PythonFileParser</span><span class="o">.</span><span class="n">java</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">PythonModuleParser</span><span class="o">.</span><span class="n">java</span> <span class="c1"># 转.py文件入口，makeParser() 返回walaPythonParser</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">PythonParser</span><span class="o">.</span><span class="n">java</span> <span class="c1"># 转CAst（PythonParser#translateToCAst()) 和 IR</span>
+<span class="err">│</span>   <span class="err">│</span>   <span class="err">└──</span><span class="n">PythonParser</span><span class="o">.</span><span class="n">CAstVisitor</span> <span class="c1"># 用于将jython.astnode 转换为 CAstNode</span>
+<span class="err">│</span>   <span class="err">└──</span> <span class="n">WalaPythonParser</span><span class="o">.</span><span class="n">java</span> <span class="c1"># 转换为jython.ast的类, 继承AnalyzingParser</span>
+<span class="err">└──</span> <span class="n">util</span>
+    <span class="err">└──</span> <span class="n">Python3Interpreter</span><span class="o">.</span><span class="n">java</span>
+</code></pre></div></td></tr></table></div>
+<h4 id="cfg">CFG</h4>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+
+<span class="k">def</span> <span class="nf">func</span><span class="p">()</span><span class="o">-&gt;</span><span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s2">&quot;ABC&quot;</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">a</span><span class="o">=</span><span class="n">func</span><span class="p">()</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">ttt</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<p>以下为main() 函数的 CFG：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><code>CFG:
+BB0[-1..-2]
+    -&gt; BB1
+BB1[0..1]
+    -&gt; BB2
+    -&gt; BB5
+BB2[2..7]
+    -&gt; BB3
+    -&gt; BB5
+BB3[8..8]
+    -&gt; BB4
+    -&gt; BB5
+BB4[9..9]
+    -&gt; BB5
+BB5[-1..-2]
+Instructions:
+BB0
+BB1
+0   v5 = lexical:func@Lscript cfg.py         cfg.py [33:6] -&gt; [33:10]
+1   v3 = invokeFunction &lt; PythonLoader, LCodeBody, do()LRoot; &gt; v5 @1 exception:v6cfg.py [33:6] -&gt; [33:12] [3=[a]]
+BB2
+3   v11 = lexical:subprocess@Lscript cfg.py  cfg.py [34:6] -&gt; [34:16]
+4   v9 = getfield &lt; PythonLoader, LRoot, call, &lt;PythonLoader,LRoot&gt; &gt; v11cfg.py [34:6] -&gt; [34:21]
+5   v15 = global:global ttt                  cfg.py [34:22] -&gt; [34:25]
+6   v13 = getfield &lt; PythonLoader, LRoot, f, &lt;PythonLoader,LRoot&gt; &gt; v15cfg.py [34:22] -&gt; [34:27]
+7   v12 = invokeFunction &lt; PythonLoader, LCodeBody, do()LRoot; &gt; v13,v3 @7 exception:v16cfg.py [34:22] -&gt; [34:30] [3=[a]]
+BB3 # call graph 解析不到，找不到函数
+8   v8 = invokeFunction &lt; PythonLoader, LCodeBody, do()LRoot; &gt; v9,v12 @8 exception:v17cfg.py [34:6] -&gt; [34:31] [8=[x]] #subprocess.call #call graph能解析到，注意所有函数调用都由CodeBody.do(this, args)完成
+BB4
+BB5
+</code></pre></div></td></tr></table></div>
+<p>python的调用实际上都动态调用<code>CodeBody.do(this, args)</code>，所有python均为一个对象并继承CodeBody类，并实现do方法。</p>
+<p>注意在第7行，ssa表现的是<code>v12=ttt.f(v3)</code>，</p>
+<h1 id="shortcomings">Shortcomings</h1>
+<ul>
+<li>BIF需要重新构造函数摘要，目前不支持多态（str()和str(a)）【can be fixed】</li>
+<li>缺失依赖时无法构建callee【may be fixed】，需要讨论在何时处理该问题</li>
+<li>数据流分析，有参考但是需要定制【can be fixed】</li>
+</ul>
+<h1 id="wala">WALA框架</h1>
+<p>com.ibm.wala.cast.loader.CAstAbstractModuleLoader#init(),先转义为CAst，再转换为IR：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="w">  </span><span class="nd">@Override</span>
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">init</span><span class="p">(</span><span class="kd">final</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Module</span><span class="o">&gt;</span><span class="w"> </span><span class="n">modules</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="n">CAst</span><span class="w"> </span><span class="n">ast</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CAstImpl</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// convert everything to CAst</span>
+<span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">Pair</span><span class="o">&lt;</span><span class="n">CAstEntity</span><span class="p">,</span><span class="w"> </span><span class="n">ModuleEntry</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">topLevelEntities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">LinkedHashSet</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Module</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">modules</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">translateModuleToCAst</span><span class="p">(</span><span class="n">module</span><span class="p">,</span><span class="w"> </span><span class="n">ast</span><span class="p">,</span><span class="w"> </span><span class="n">topLevelEntities</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// generate IR as needed</span>
+<span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="n">TranslatorToIR</span><span class="w"> </span><span class="n">xlatorToIR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">initTranslator</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Pair</span><span class="o">&lt;</span><span class="n">CAstEntity</span><span class="p">,</span><span class="w"> </span><span class="n">ModuleEntry</span><span class="o">&gt;</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">topLevelEntities</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">shouldTranslate</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="na">fst</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">xlatorToIR</span><span class="p">.</span><span class="na">translate</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="na">fst</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">snd</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DEBUG</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span>
+
+<span class="w">    </span><span class="n">finishTranslation</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>translateModuleToCAst(module, ast, topLevelEntities) 读取目标文件（module），转化为CAst（保存在ast）</p>
+<p>CAstNode定义在com.ibm.wala.cast.tree.CAstNode</p>
+<p><img alt="image-20201111141539244" src="image-20201111141539244.png" /></p>
+<p>xlatorToIR 继承AstTranslator，调用其translate方法，调用walkEntities()-&gt;visitEntities()将CAst转化为IR</p>
+<h2 id="classhierarchymethodtargetselector">ClassHierarchyMethodTargetSelector</h2>
+<p>getCalleeTarget查找函数调用 </p>
+<p>com.ibm.wala.ipa.cha.ClassHierarchy#resolveMethod(com.ibm.wala.classLoader.IClass, com.ibm.wala.types.Selector)调用com.ibm.wala.classLoader.IClass#getMethod , 找类中的方法</p>
+<p>com.ibm.wala.ipa.summaries.BypassMethodTargetSelector#getCalleeTarget # 找类中方法（在找不到类时）</p>
+<p>关键在于这里</p>
+<p><img alt="image-20201111220241275" src="image-20201111220241275.png" /></p>
+<p>如果有函数摘要，worklist会添加新函数指针，然后在执行一遍这里，此时currentObjs有值，没有函数摘要时，worklist不添加函数指针，currentObjs没有值，</p>
+<ol>
+<li>找rhs[0].setValue() </li>
+</ol>
+<p>在new import时set</p>
+<p><img alt="image-20201112142031071" src="image-20201112142031071.png" /></p>
+<ol>
+<li>分析第二次调用cpa的执行路径</li>
+</ol>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.51198bba.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.5.1/dist/algoliasearch-lite.umd.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.8.3/dist/instantsearch.production.min.js"></script>
+      
+        <script src="../../assets/js/algolia-search.js"></script>
+      
+    
+  </body>
+</html>
